@@ -1,0 +1,57 @@
+@startuml ejercicioPaquetes
+
+    package ventanas{
+        Class Inicio{}
+
+        Class Principal{}
+
+        Class Partida{}
+
+        Class Registro{}
+    }
+
+    package sistema{
+        Class Usuario{
+            id
+            nombre
+            contraseña
+            verDatos()
+            cambiarNombre()
+            cambiarContraseña()
+        }
+
+        Class Partida{
+            id
+            estado
+            fecha_inicio
+            agregarUsuario()
+            expulsarUsuario()
+            cambiarEstado()
+        }
+
+        Class Mazo{
+            id
+            agregarNaipe()
+            quitarNaipe()
+            validar()
+        }
+
+        Class Naipe{
+            id
+            tipo
+            rareza
+            efecto
+            verDatos()
+            usarEfecto()
+        }
+
+    }
+
+
+    Principal "1" *--> "1" Usuario
+    ventanas.Partida "1" *--> "1" sistema.Partida
+    sistema.Partida "1" *--> "4" Usuario
+    sistema.Partida "1" *--> "1" Usuario
+    Usuario "1" *--> "3" Mazo
+    Mazo "1" *--> "60" Naipe
+@enduml

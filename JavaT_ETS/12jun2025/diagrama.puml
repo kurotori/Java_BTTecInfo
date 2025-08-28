@@ -1,0 +1,12 @@
+@startuml herencia
+
+    Class Vehiculo{}
+
+    Class Auto{}
+    Class Moto{}
+
+    Vehiculo <|-- Auto
+    Vehiculo <|-- Moto
+
+
+@enduml

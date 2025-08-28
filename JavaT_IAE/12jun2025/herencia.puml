@@ -1,0 +1,15 @@
+@startuml herencia
+    Class Motor{}
+    Class Rueda{}
+
+    Class Vehiculo{}
+    Class Auto{}
+    Class Moto{}
+    Class Camión{}
+
+    Vehiculo *-l- Motor
+    Vehiculo *-r- Rueda
+    Vehiculo <|-- Auto
+    Vehiculo <|-- Moto
+    Vehiculo <|-- Camión
+@enduml

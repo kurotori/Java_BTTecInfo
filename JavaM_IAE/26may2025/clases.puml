@@ -1,0 +1,14 @@
+@startuml Clases
+
+    Class Auto{
+        -marca:String
+        -modelo:String
+        +color:String
+        -año:int
+
+        +arrancar():void
+        +verDatos():void
+        
+    }
+
+@enduml

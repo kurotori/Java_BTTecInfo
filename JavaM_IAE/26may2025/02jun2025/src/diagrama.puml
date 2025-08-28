@@ -1,0 +1,28 @@
+@startuml clases
+
+    package ventanas{
+
+        Class Login{}
+        Class Principal{}
+    }
+
+    package aplicacion{
+        Class Usuario{
+            -id:int
+            -nombre:String
+            -contraseña:String
+
+            -iniciarSesion(String nombre, String contraseña):void
+            -cerrarSesion(Sesion sesionAbierta):void
+        }
+
+        Class Sesion{
+            id:int
+            fechaInicio:String
+            estado:boolean
+        }
+
+        Usuario "1" *-- "0..n" Sesion
+    }
+
+@enduml

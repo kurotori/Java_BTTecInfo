@@ -1,0 +1,15 @@
+@startuml Auto
+
+    Class Auto{
+        -marca:String
+        -color:String
+        +modelo:String
+
+        +encender():void
+    }
+
+    Class Rueda{
+
+    }
+
+@enduml

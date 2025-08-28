@@ -1,0 +1,20 @@
+@startuml Clases
+    Class Usuario{
+        nombre
+        puntaje
+    }
+
+    Class Partida{
+        id
+        nombre
+        marcaTiempo
+    }
+
+    Class Jugada{
+        id
+        contenido
+    }
+
+    Usuario "2..6" --* "1" Partida
+    Usuario "1" *-- "n" Jugada
+@enduml

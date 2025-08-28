@@ -1,0 +1,15 @@
+@startuml clases
+
+    Class Auto{
+        -marca:String
+        -modelo:String
+
+        +Auto():Auto
+        +Auto(marca:String, modelo:String):Auto
+        +verDatos()
+        
+
+    }
+
+
+@enduml

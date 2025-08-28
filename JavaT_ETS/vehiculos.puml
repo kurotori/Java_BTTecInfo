@@ -1,0 +1,37 @@
+@startuml vehiculos
+
+Class Vehículo{
+    +mover():void
+}
+
+Class Terrestre{}
+Class Aéreo{
+    +despegar():void
+    +aterrizar():void
+}
+Class Acuático{}
+
+Class Auto{}
+Class Moto{}
+
+Class Avión{}
+Class Helicóptero{}
+
+Class Submarino{}
+Class Barco{}
+
+Vehículo <|-- Terrestre
+Vehículo <|-- Acuático
+Vehículo <|-- Aéreo
+
+Terrestre <|-- Auto
+Terrestre <|-- Moto
+
+Aéreo <|-- Avión
+Aéreo <|-- Helicóptero
+
+Acuático <|-- Barco
+Acuático <|-- Submarino
+
+
+@enduml

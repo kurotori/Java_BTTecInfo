@@ -1,0 +1,12 @@
+@startuml paquetes
+
+Package aplicación{
+     Class Cliente {}
+
+     Class Factura {}
+
+     Class Cajero {}
+}
+
+
+@enduml

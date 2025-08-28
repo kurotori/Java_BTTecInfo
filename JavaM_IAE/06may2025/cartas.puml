@@ -1,0 +1,14 @@
+@startuml JuegoDeCartas
+
+    Class Carta{
+        número
+        palo
+    }
+
+    Class Mazo{
+
+    }
+
+    Carta "48"--* "1" Mazo
+
+@enduml

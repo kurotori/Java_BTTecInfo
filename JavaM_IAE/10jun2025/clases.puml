@@ -1,0 +1,22 @@
+@startuml Herencia
+
+    Class Usuario{
+        id
+        nombre
+        email
+        contraseña
+        iniciarSesion()
+        cerrarSesion()
+    }
+
+    Class UsuarioNormal{
+        reportarUsuario()
+    }
+    
+    Class Admin{
+        banearUsuario()
+    }
+
+    Usuario <|-- UsuarioNormal
+    Usuario <|-- Admin
+@enduml
