@@ -1,7 +1,9 @@
 package com.example.interfaz;
 
+import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -20,7 +22,7 @@ public class PanelUsuario extends JPanel {
 
     private void configurar() {
         setSize(400, 150);
-
+        setBorder(BorderFactory.createLineBorder(Color.BLACK));
         int x = 10;
         int y = 10;
 
