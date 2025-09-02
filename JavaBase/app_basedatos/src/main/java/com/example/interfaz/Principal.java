@@ -90,7 +90,7 @@ public class Principal extends JFrame {
                 c.close();
 
             } catch (Exception e) {
-                // TODO: handle exception
+                System.out.println("\nError: " + e.getMessage());
             }
         }
 

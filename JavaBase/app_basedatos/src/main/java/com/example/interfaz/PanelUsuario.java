@@ -22,35 +22,33 @@ public class PanelUsuario extends JPanel {
 
     private void configurar() {
         setSize(400, 150);
+        setPreferredSize(getSize());
+        setLayout(null);
         setBorder(BorderFactory.createLineBorder(Color.BLACK));
         int x = 10;
         int y = 10;
 
-        Font fntTexto = new Font("Calibri", Font.BOLD, 12);
+        Font fntTexto = new Font("Calibri", Font.BOLD, 20);
 
         lblId = new JLabel("ID: " + usuario.getId());
         lblId.setFont(fntTexto);
         lblId.setBounds(x, y, 60, 30);
         add(lblId);
 
-        lblNombre = new JLabel(usuario.getNombre());
+        lblNombre = new JLabel(usuario.getNombre() + " " + usuario.getApellido());
         lblNombre.setFont(fntTexto);
-        lblNombre.setBounds(x, (y + 40), 120, 30);
+        lblNombre.setBounds((x + 65), y, 240, 30);
         add(lblNombre);
-
-        lblApellido = new JLabel(usuario.getApellido());
-        lblApellido.setFont(fntTexto);
-        lblApellido.setBounds((x + 130), (y + 40), 120, 30);
-        add(lblApellido);
 
         lblEmail = new JLabel(usuario.getEmail());
         lblEmail.setFont(fntTexto);
-        lblEmail.setBounds(x, (y + 80), 150, 30);
+        lblEmail.setBounds(x, (y + 75), 240, 30);
         add(lblEmail);
 
         lblFechaRegistro = new JLabel(usuario.getFecha_registro());
         lblFechaRegistro.setFont(fntTexto);
         lblFechaRegistro.setBounds(x, (y + 120), 150, 30);
         add(lblFechaRegistro);
+
     }
 }
