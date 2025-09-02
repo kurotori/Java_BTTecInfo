@@ -1,7 +1,10 @@
 package com.example;
 
+import com.example.bdd.Conexion;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Conexion c = new Conexion("localhost", 3306, "estudiante", "estudiantes");
+        c.probarConexion();
     }
 }
