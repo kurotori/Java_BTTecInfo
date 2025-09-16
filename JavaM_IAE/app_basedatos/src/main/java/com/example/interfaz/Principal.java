@@ -1,6 +1,8 @@
 package com.example.interfaz;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.*;
@@ -13,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 import com.example.bdd.Conexion;
 import com.example.herramientas.UtilesVentana;
@@ -23,6 +26,7 @@ public class Principal extends JFrame {
     private Conexion conexion;
     private Inicio anterior;
 
+    private JTextField txtBusqueda;
     private JLabel lblTitulo, lblResultados, lblBusqueda;
     private JButton btnBuscar, btnResetear, btnNuevo, btnModificar, btnBorrar;
     private JPanel pnlResultados;
@@ -41,6 +45,24 @@ public class Principal extends JFrame {
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);
+
+        txtBusqueda = new JTextField();
+        txtBusqueda.setBounds(10, 10, 200, 30);
+        getContentPane().add(txtBusqueda);
+
+        btnBuscar = new JButton("Buscar");
+        btnBuscar.setBounds(220, 10, 80, 30);
+        getContentPane().add(btnBuscar);
+
+        btnBuscar.addActionListener(
+                new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        clickBtnBuscar(e);
+                    }
+
+                });
 
         pnlResultados = new JPanel();
         pnlResultados.setBounds(10, 80, 510, 300);
@@ -107,6 +129,38 @@ public class Principal extends JFrame {
         if (cerrar == 0) {
             anterior.setVisible(true);
             this.dispose();
+        }
+    }
+
+    private void clickBtnBuscar(ActionEvent evento) {
+        String textoBusqueda = txtBusqueda.getText();
+        if (textoBusqueda.length() > 0) {
+            String consulta = "select id, nombre, apellido, email, fecha_registro " +
+                    "from usuarios where " +
+                    "nombre like '%" + textoBusqueda + "%'";
+
+            try {
+                Connection c = conexion.crearConexion();
+                Statement sentencia = c.createStatement();
+                ResultSet resultado = sentencia.executeQuery(consulta);
+
+                pnlResultados.removeAll();
+                while (resultado.next()) {
+                    Usuario u = new Usuario(
+                            resultado.getInt(1),
+                            resultado.getString(2),
+                            resultado.getString(3),
+                            resultado.getString(4),
+                            resultado.getString(5));
+                    PanelUsuario p = new PanelUsuario(u);
+                    pnlResultados.add(p);
+                }
+                revalidate();
+                repaint();
+
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
         }
     }
 
