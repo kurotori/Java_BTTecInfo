@@ -1,5 +1,6 @@
 package com.example;
 
+import java.security.MessageDigest;
 import java.util.Random;
 
 public class Seguridad {
@@ -21,10 +22,27 @@ public class Seguridad {
         return sal;
     }
 
+    public String hashearDato(String dato) {
+        String hash = "";
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] datos = dato.getBytes();
+            byte[] datosHash = md.digest(datos);
+            StringBuilder constructor = new StringBuilder();
+            for (byte b : datosHash) {
+                constructor.append(
+                        String.format("%02x", b));
+            }
+            hash = constructor.toString();
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return hash;
+    }
+
     public static void main(String[] args) {
         Seguridad s = new Seguridad();
-        for (int i = 0; i < 10; i++) {
-            System.out.println(s.crearSal(30));
-        }
+        System.out.println(s.hashearDato("contraseña"));
     }
 }
