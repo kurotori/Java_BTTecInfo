@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.example.bdd.Conexion;
+import com.example.herramientas.CampoTexto;
 import com.example.herramientas.UtilesVentana;
 import com.example.sistema.Usuario;
 
@@ -26,6 +27,7 @@ public class Principal extends JFrame {
     private JLabel lblTitulo, lblResultados, lblBusqueda;
     private JButton btnBuscar, btnResetear, btnNuevo, btnModificar, btnBorrar;
     private JPanel pnlResultados;
+    private CampoTexto txtBusqueda;
 
     public Principal(Conexion conexion, Inicio anterior) {
         this.conexion = conexion;
@@ -41,6 +43,14 @@ public class Principal extends JFrame {
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);
+
+        txtBusqueda = new CampoTexto("Nombre o apellido...");
+        txtBusqueda.setBounds(10, 10, 200, 30);
+        getContentPane().add(txtBusqueda);
+
+        btnBuscar = new JButton("Buscar");
+        btnBuscar.setBounds(220, 10, 80, 30);
+        getContentPane().add(btnBuscar);
 
         pnlResultados = new JPanel();
         pnlResultados.setBounds(10, 80, 510, 300);

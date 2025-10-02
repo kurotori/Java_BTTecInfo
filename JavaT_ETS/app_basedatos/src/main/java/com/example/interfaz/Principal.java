@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 import com.example.bdd.Conexion;
 import com.example.herramientas.UtilesVentana;
@@ -26,6 +27,7 @@ public class Principal extends JFrame {
     private JLabel lblTitulo, lblResultados, lblBusqueda;
     private JButton btnBuscar, btnResetear, btnNuevo, btnModificar, btnBorrar;
     private JPanel pnlResultados;
+    private JTextField txtBuscar;
 
     public Principal(Conexion conexion, Inicio anterior) {
         this.conexion = conexion;
@@ -107,6 +109,16 @@ public class Principal extends JFrame {
         if (cerrar == 0) {
             anterior.setVisible(true);
             this.dispose();
+        }
+    }
+
+    private void clickBtnBuscar(){
+        String textoBusqueda = 
+            txtBuscar.getText();
+        if ( textoBusqueda.length() > 0 ) {
+            String consulta = 
+                "select id,nombre,apellido,email,fecha_registro "+
+                "from usuarios where "
         }
     }
 
